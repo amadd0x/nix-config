@@ -1,0 +1,79 @@
+# System packages, ./pkgs, and shell configuration
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    ./configuration.nix
+    ./hardware-configuration.nix
+    ./shell/zsh.nix
+    ./services
+  ];
+
+  environment.systemPackages = with pkgs; [
+    fd
+    jq
+    gh
+    git
+    openvpn
+    coreutils
+    mailutils
+    shellcheck
+    busybox
+    update-resolv-conf
+    xclip
+    glib-networking
+    gnumake
+    flameshot
+    inkscape
+    qFlipper
+    zip
+    vlc
+    barrier
+    memtester
+    age
+    sops
+    zsh
+    zsh-powerlevel10k
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+
+    nil # Nix LSP
+    nixfmt # Nix formatter
+    alejandra
+
+    google-chrome
+    firefox
+    slack
+    citrix_workspace
+
+    vscode
+    vscode-extensions.github.copilot
+    vscode-extensions.hashicorp.terraform
+    vscode-extensions.bbenoist.nix
+
+    go
+    goreleaser
+    tfswitch
+    tfsec
+    awscli2
+    nomad
+    damon
+    packer
+    promql-cli
+    ngrok
+
+    ssm-session-manager-plugin
+
+    discord
+    steam
+
+    # From ./pkgs
+    code-server
+  ];
+
+  environment.variables = {
+    EDITOR = "code --wait";
+  };
+}
