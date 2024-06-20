@@ -42,7 +42,7 @@
         {raw_exec = [{config = [{enabled = true;}];}];}
         {docker = [{config = [{volumes = [{enabled = true;}];}];}];}
       ];
-      bind_addr = "192.168.0.112";
+      bind_addr = "0.0.0.0";
       data_dir = "/var/lib/nomad";
       # log_rotate_bytes = 1000000;
       advertise = {
