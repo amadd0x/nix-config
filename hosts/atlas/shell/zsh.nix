@@ -22,7 +22,12 @@
 
     ohMyZsh = {
       enable = true;
-      plugins = ["git"];
+      plugins = [
+        "git"
+        "man"
+        "aws"
+        "docker"
+      ];
     };
   };
 }
