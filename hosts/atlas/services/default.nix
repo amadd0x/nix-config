@@ -5,5 +5,6 @@
     ./nvidia.nix
     ./tailscale.nix
     ./openvpn.nix
+    ./networking.nix
   ];
 }

@@ -48,16 +48,7 @@
     auto-optimise-store = true;
   };
 
-  networking.firewall.allowedTCPPorts = [8080 24800];
-  networking.hostName = "atlas";
-  networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
-
-  # Add to /etc/hosts
-  networking.extraHosts = ''
-    192.168.0.112 traefik.local
-    192.168.0.112 nomad.traefik.local
-  '';
 
   time.timeZone = "America/Chicago";
 
