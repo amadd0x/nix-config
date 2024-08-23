@@ -34,6 +34,11 @@
             read_only = false;
           };
         };
+        drain_on_shutdown = {
+          deadline = "5m";
+          ignore_system_jobs = false;
+          force = false;
+        };
       };
       plugin = [
         {raw_exec = [{config = [{enabled = true;}];}];}
