@@ -47,6 +47,7 @@
     firefox
     slack
     citrix_workspace
+    prismlauncher
 
     vscode
     vscode-extensions.github.copilot
@@ -57,7 +58,7 @@
     goreleaser
     tfswitch
     tfsec
-    awscli2
+    pkgs.unstable.awscli2
     nomad
     damon
     packer

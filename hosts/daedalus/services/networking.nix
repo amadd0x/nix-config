@@ -4,7 +4,15 @@
   ...
 }: {
   networking.hostName = "daedalus";
-  networking.firewall.allowedTCPPorts = [8080 8081];
+  networking.firewall.allowedTCPPorts = [
+    80
+    81
+    443
+    8080
+    8081
+    25565 # Minecraft
+    25575 # Minecraft RCON
+  ];
 
   # Add to /etc/hosts
   networking.hosts = {
