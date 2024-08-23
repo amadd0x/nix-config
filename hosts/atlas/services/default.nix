@@ -6,5 +6,6 @@
     ./tailscale.nix
     ./openvpn.nix
     ./networking.nix
+    ./nomad.nix
   ];
 }
