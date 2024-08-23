@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  networking.firewall.allowedTCPPorts = [4646 4647];
+  networking.firewall.allowedTCPPorts = [4646 4647 4648];
   networking.firewall.logRefusedPackets = true; # Enable logging of refused packets, check with journalctl -k
 
   services.nomad = {
