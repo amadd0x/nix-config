@@ -44,7 +44,7 @@
       ];
       bind_addr = "0.0.0.0";
       data_dir = "/var/lib/nomad";
-      # log_rotate_bytes = 1000000;
+      log_rotate_bytes = 1000000;
       advertise = {
         http = "192.168.0.112";
         rpc = "192.168.0.112";
