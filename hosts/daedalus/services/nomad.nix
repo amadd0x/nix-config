@@ -44,6 +44,10 @@
             path = "/media/data/photos";
             read_only = false;
           };
+          immich-db = {
+            path = "/media/data/immich-db";
+            read_only = false;
+          };
         };
       };
       server = {
