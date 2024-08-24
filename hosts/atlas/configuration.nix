@@ -167,6 +167,7 @@
   sops.secrets.gmail-pass = {};
   sops.secrets.ovpn-user = {};
   sops.secrets.ovpn-pass = {};
+  sops.secrets.ts-authkey = {};
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";

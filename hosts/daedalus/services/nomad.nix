@@ -32,6 +32,18 @@
             path = "/media/data/games";
             read_only = false;
           };
+          immich-upload = {
+            path = "/media/data/immich-upload";
+            read_only = false;
+          };
+          immich-cache = {
+            path = "/media/data/immich-cache";
+            read_only = false;
+          };
+          photos = {
+            path = "/media/data/photos";
+            read_only = false;
+          };
         };
       };
       server = {

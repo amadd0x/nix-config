@@ -19,6 +19,7 @@
         exit 0
       fi
       ${tailscale}/bin/tailscale up -authkey $(cat /run/secrets/ts-authkey)
+      exit 0
     '';
   };
 }
