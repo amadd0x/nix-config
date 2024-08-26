@@ -10,8 +10,8 @@ with lib; {
       config = ''config /etc/openvpn/client/client.conf '';
       updateResolvConf = true;
       autoStart = false;
-      authUserPass.username = ''$(cat /run/secrets/ovpn-user)'';
-      authUserPass.password = ''$(cat /run/secrets/ovpn-pass)'';
+      # authUserPass.username = ''$(cat /run/secrets/ovpn-user)'';
+      # authUserPass.password = ''$(cat /run/secrets/ovpn-pass)'';
     };
   };
 }
