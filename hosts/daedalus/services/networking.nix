@@ -10,8 +10,11 @@
     443
     8080
     8081
-    25565 # Minecraft
-    25575 # Minecraft RCON
+    # 25565 # Minecraft
+    # 25575 # Minecraft RCON
+    27000 # Avorion game port
+    27003 # Avorion query port
+    27021 # Avorion Steam port
   ];
 
   # Add to /etc/hosts
