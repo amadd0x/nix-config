@@ -12,6 +12,8 @@
     8081
     # 25565 # Minecraft
     # 25575 # Minecraft RCON
+  ];
+  networking.firewall.allowedUDPPorts = [
     27000 # Avorion game port
     27003 # Avorion query port
     27021 # Avorion Steam port
