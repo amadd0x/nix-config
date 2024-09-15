@@ -37,5 +37,6 @@
     cloudflared
 
     code-server
+    scanmem
   ];
 }
