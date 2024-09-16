@@ -14,13 +14,14 @@
     8081
     # 25565 # Minecraft
     # 25575 # Minecraft RCON
+    7474
   ];
   networking.firewall.allowedUDPPorts = [
     7654 # Satisfactory-wh
     7777 # Satisfactory
-    27000 # Avorion game port
-    27003 # Avorion query port
-    27021 # Avorion Steam port
+    # 27000 # Avorion game port
+    # 27003 # Avorion query port
+    # 27021 # Avorion Steam port
   ];
 
   # Add to /etc/hosts
