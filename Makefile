@@ -17,6 +17,9 @@ switch_daedalus:
 verify_and_repair: gc
 	sudo nix-store --verify --check-contents --repair
 
+update: gc
+	@nix flake update
+
 gc:
 	nix-collect-garbage
 
