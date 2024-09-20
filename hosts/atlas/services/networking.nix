@@ -6,7 +6,6 @@
   networking.hostName = "atlas";
   networking.networkmanager.enable = true;
   networking.firewall.allowedTCPPorts = [
-    2222
   ];
 
   # Add to /etc/hosts
