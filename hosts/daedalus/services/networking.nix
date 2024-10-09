@@ -15,6 +15,7 @@
     # 25565 # Minecraft
     # 25575 # Minecraft RCON
     7474
+    3001 # Immich
   ];
   networking.firewall.allowedUDPPorts = [
     7654 # Satisfactory-wh
