@@ -7,5 +7,6 @@
     ./openvpn.nix
     ./networking.nix
     ./nomad.nix
+    ./syncthing.nix
   ];
 }
