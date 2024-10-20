@@ -16,6 +16,7 @@
     # 25575 # Minecraft RCON
     7474
     3001 # Immich
+    8384 # Syncthing
   ];
   networking.firewall.allowedUDPPorts = [
     7654 # Satisfactory-wh
