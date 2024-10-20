@@ -4,5 +4,6 @@
     ./nomad.nix
     ./networking.nix
     ./tailscale.nix
+    ./syncthing.nix
   ];
 }
