@@ -48,6 +48,10 @@
             path = "/media/data/immich-db";
             read_only = false;
           };
+          foundry = {
+            path = "/media/data/foundry";
+            read_only = false;
+          };
         };
       };
       server = {
