@@ -21,6 +21,7 @@
     mailutils
     shellcheck
     busybox
+    unrar-wrapper
     update-resolv-conf
     xclip
     glib-networking
