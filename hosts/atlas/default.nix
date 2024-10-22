@@ -27,6 +27,7 @@
     glib-networking
     gnumake
     flameshot
+    termdown
     peek
     inkscape
     qFlipper
