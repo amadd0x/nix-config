@@ -15,7 +15,7 @@
     # 25565 # Minecraft
     # 25575 # Minecraft RCON
     7474
-    3001 # Immich
+    2283 # Immich
     8384 # Syncthing
   ];
   networking.firewall.allowedUDPPorts = [
