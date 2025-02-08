@@ -23,6 +23,7 @@
     settings = {
       name = "daedalus";
       client = {
+        network_interface = "eno50";
         enabled = true;
         options = {
           "driver.raw_exec.enable" = "1";
