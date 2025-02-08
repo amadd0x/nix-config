@@ -8,8 +8,8 @@
     80
     81
     443
-    7654 # Satisfactory-wh
-    7777 # Satisfactory
+    # 7654 # Satisfactory-wh
+    # 7777 # Satisfactory
     8080
     8081
     # 25565 # Minecraft
@@ -19,8 +19,8 @@
     8384 # Syncthing
   ];
   networking.firewall.allowedUDPPorts = [
-    7654 # Satisfactory-wh
-    7777 # Satisfactory
+    # 7654 # Satisfactory-wh
+    # 7777 # Satisfactory
     # 27000 # Avorion game port
     # 27003 # Avorion query port
     # 27021 # Avorion Steam port
