@@ -17,6 +17,7 @@
     7474
     2283 # Immich
     8384 # Syncthing
+    26706 # reactive-resume
   ];
   networking.firewall.allowedUDPPorts = [
     # 7654 # Satisfactory-wh
