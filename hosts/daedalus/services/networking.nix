@@ -12,8 +12,8 @@
     # 7777 # Satisfactory
     8080
     8081
-    # 25565 # Minecraft
-    # 25575 # Minecraft RCON
+    25565 # Minecraft
+    25575 # Minecraft RCON
     7474
     2283 # Immich
     8384 # Syncthing
