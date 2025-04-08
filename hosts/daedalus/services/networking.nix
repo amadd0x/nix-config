@@ -12,6 +12,7 @@
     # 7777 # Satisfactory
     8080
     8081
+    8085
     25565 # Minecraft
     25575 # Minecraft RCON
     7474
