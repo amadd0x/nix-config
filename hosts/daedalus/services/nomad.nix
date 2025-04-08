@@ -27,7 +27,6 @@
         enabled = true;
         options = {
           "driver.raw_exec.enable" = "1";
-          "docker.privileged.enabled" = true;
         };
         host_volume = {
           games = {
@@ -72,6 +71,7 @@
                       enabled = true;
                     }
                   ];
+                  allow_privileged = true;
                 }
               ];
             }
