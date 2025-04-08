@@ -8,7 +8,7 @@
 
   services.nomad = {
     enable = true;
-    package = pkgs.nomad_1_6;
+    package = pkgs.nomad_1_9;
     enableDocker = true;
     dropPrivileges = false;
     extraPackages = with pkgs; [
@@ -16,7 +16,7 @@
       curl
       jq
       awscli2
-      nomad_1_6
+      nomad_1_9
       docker
     ];
 

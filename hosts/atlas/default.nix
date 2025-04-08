@@ -49,7 +49,7 @@
     google-chrome
     firefox
     slack
-    citrix_workspace
+    # citrix_workspace
     prismlauncher
 
     vscode
