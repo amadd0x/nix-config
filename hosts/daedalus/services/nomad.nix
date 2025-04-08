@@ -61,7 +61,22 @@
       };
       plugin = [
         {raw_exec = [{config = [{enabled = true;}];}];}
-        {docker = [{config = [{volumes = [{enabled = true;}];}];}];}
+        {
+          docker = [
+            {
+              config = [
+                {
+                  privileged = true;
+                  volumes = [
+                    {
+                      enabled = true;
+                    }
+                  ];
+                }
+              ];
+            }
+          ];
+        }
       ];
       bind_addr = "0.0.0.0";
       data_dir = "/var/lib/nomad";
