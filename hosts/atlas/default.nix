@@ -67,6 +67,7 @@
     packer
     promql-cli
     ngrok
+    lmstudio
 
     ssm-session-manager-plugin
 
