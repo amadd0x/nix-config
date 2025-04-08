@@ -66,7 +66,6 @@
             {
               config = [
                 {
-                  privileged = true;
                   volumes = [
                     {
                       enabled = true;
