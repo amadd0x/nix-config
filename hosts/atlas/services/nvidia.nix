@@ -9,7 +9,7 @@
   services.open-webui = {
     enable = true;
     port = 1234;
-  }
+  };
   # Enable OpenGL
   hardware.opengl = {
     enable = true;

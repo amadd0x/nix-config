@@ -68,6 +68,7 @@
     promql-cli
     ngrok
     lmstudio
+    docker-compose
 
     ssm-session-manager-plugin
 
