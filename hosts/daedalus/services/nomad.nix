@@ -6,6 +6,10 @@
   networking.firewall.allowedTCPPorts = [4646 4647 4648];
   networking.firewall.logRefusedPackets = true; # Enable logging of refused packets, check with journalctl -k
 
+  virtualisation.docker.enable = true;
+  networking.bridges.br0.interfaces = ["eth0"];
+  networking.interfaces.br0.useDHCP = true;
+
   services.nomad = {
     enable = true;
     package = pkgs.nomad_1_9;
