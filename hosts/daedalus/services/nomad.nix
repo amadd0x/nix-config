@@ -5,6 +5,7 @@
 }: {
   networking.firewall.allowedTCPPorts = [4646 4647 4648];
   networking.firewall.logRefusedPackets = true; # Enable logging of refused packets, check with journalctl -k
+  virtualisation.docker.extraOptions = "--default-ulimit nofile=262144:262144";
 
   virtualisation.docker.enable = true;
   networking.bridges.br0.interfaces = ["eth0"];
