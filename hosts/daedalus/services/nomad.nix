@@ -22,11 +22,13 @@
       awscli2
       nomad_1_9
       docker
+      cni-plugins
     ];
 
     settings = {
       name = "daedalus";
       client = {
+        cni_path = "${pkgs.cni-plugins}/bin";
         network_interface = "eno50";
         enabled = true;
         options = {
