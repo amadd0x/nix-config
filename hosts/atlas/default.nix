@@ -70,6 +70,8 @@
     lmstudio
     docker-compose
     azure-cli
+    python313
+    python313Packages.pygobject3
 
     ssm-session-manager-plugin
 
