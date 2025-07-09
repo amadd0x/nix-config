@@ -18,7 +18,7 @@
       if [ $status = "Running" ]; then
         exit 0
       fi
-      ${tailscale}/bin/tailscale up -authkey $(cat /run/secrets/ts-authkey)
+      # ${tailscale}/bin/tailscale up -authkey $(cat /run/secrets/ts-authkey)
     '';
   };
 }

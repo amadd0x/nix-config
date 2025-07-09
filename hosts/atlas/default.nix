@@ -69,6 +69,7 @@
     ngrok
     lmstudio
     docker-compose
+    azure-cli
 
     ssm-session-manager-plugin
 
