@@ -49,7 +49,7 @@
     google-chrome
     firefox
     slack
-    citrix_workspace_24_02_0
+    # citrix_workspace_24_02_0
     prismlauncher
 
     vscode
@@ -71,7 +71,6 @@
     docker-compose
     azure-cli
     python313
-    python313Packages.pygobject3
 
     ssm-session-manager-plugin
 
