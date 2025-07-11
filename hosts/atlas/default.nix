@@ -51,6 +51,7 @@
     slack
     # citrix_workspace_24_02_0
     prismlauncher
+    teams-for-linux
 
     vscode
     vscode-extensions.github.copilot
