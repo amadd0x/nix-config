@@ -62,7 +62,6 @@
     goreleaser
     tfswitch
     tfsec
-    trivy
     pkgs.unstable.awscli2
     nomad
     damon
