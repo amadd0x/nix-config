@@ -62,6 +62,7 @@
     goreleaser
     tfswitch
     tfsec
+    trunk-io
     pkgs.unstable.awscli2
     nomad
     damon
