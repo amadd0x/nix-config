@@ -17,6 +17,7 @@
     gh
     git
     openvpn
+    openssl
     coreutils
     mailutils
     shellcheck
