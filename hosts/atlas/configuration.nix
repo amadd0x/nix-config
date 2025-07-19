@@ -112,6 +112,9 @@
 
   services.envfs.enable = true;
 
+  # Enable x2go server
+  # services.x2goserver.enable = true;
+
   # Enable sound with pipewire.
   # sound.enable = true;
   hardware.pulseaudio.enable = false;

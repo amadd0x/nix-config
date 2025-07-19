@@ -18,6 +18,7 @@
     git
     openvpn
     openssl
+    x2goclient
     coreutils
     mailutils
     shellcheck
