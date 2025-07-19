@@ -18,7 +18,7 @@
     git
     openvpn
     openssl
-    xrdp
+    remmina
     coreutils
     mailutils
     shellcheck
