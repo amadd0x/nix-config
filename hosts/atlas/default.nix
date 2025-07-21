@@ -17,6 +17,7 @@
     gh
     git
     openvpn
+    openvpn3
     openssl
     remmina
     coreutils
