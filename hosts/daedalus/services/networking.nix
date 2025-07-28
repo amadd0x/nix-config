@@ -8,17 +8,18 @@
     80
     81
     443
+    2283 # Immich
     # 7654 # Satisfactory-wh
     # 7777 # Satisfactory
+    7474
     8080
     8081
     8082
     8085
-    25565 # Minecraft
-    25575 # Minecraft RCON
-    7474
-    2283 # Immich
     8384 # Syncthing
+    25555 # Rimworld
+    # 25565 # Minecraft
+    # 25575 # Minecraft RCON
     26706 # reactive-resume
   ];
   networking.firewall.allowedUDPPorts = [
