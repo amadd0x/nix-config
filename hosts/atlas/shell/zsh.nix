@@ -5,7 +5,7 @@
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     histSize = 1000000000;
-    histFile = "/home/amaddox/zsh/history";
+    histFile = "/home/amaddox/.zsh_history";
 
     shellAliases = {
       switch = "cd ~/nix-config; make switch_atlas; cd -;";
