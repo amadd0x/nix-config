@@ -89,4 +89,6 @@
   environment.variables = {
     EDITOR = "code --wait";
   };
+
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 }
