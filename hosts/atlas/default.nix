@@ -46,6 +46,7 @@
     zsh-syntax-highlighting
 
     nil # Nix LSP
+    nixd
     nixfmt # Nix formatter
     alejandra
 
