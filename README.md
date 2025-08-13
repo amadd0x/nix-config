@@ -1,4 +1,6 @@
-# :construction: Under Construction :construction:
+# Nix Configs
+
+[![NixOS](https://img.shields.io/badge/NixOS-7ebae4?style=flat-square&logo=nixos&logoColor=white)](https://nixos.org/)
 
 This repository contains my personal nix configs. I am learning.  If you want to re-use anything here your mileage may vary.  If you're learning as well, here are some resources I've found helpful:
 
@@ -24,6 +26,8 @@ https://github.com/Misterio77/nix-config
 9m, Impermanence Setup: https://youtu.be/YPKwkWtK7l0
 
 7m, NixOS Secrets Management: https://youtu.be/G5f6GC7SnhU
+
+9m, Nix language server setup: https://youtu.be/M_zMoHlbZBY
 
 ### Links
 
