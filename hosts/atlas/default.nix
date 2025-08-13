@@ -19,6 +19,7 @@
     openvpn
     openvpn3
     openssl
+    ocs-url
     remmina
     coreutils
     mailutils
