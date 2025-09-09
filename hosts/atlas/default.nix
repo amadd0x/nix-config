@@ -76,6 +76,7 @@
     lmstudio
     docker-compose
     azure-cli
+    pkgs.unstable.scalr-cli
     python313
 
     ssm-session-manager-plugin
