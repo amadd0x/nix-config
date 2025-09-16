@@ -108,23 +108,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    jq
-    wget
-    vscode
-    direnv
-    zsh-powerlevel10k
-    azure-cli
-    tfswitch
-    gnumake
-
-    google-chrome
-    youtube-music
-    discord
-  ];
-
   environment.variables = {
     EDITOR = "/run/current-system/sw/bin/code";
     SUDO_EDITOR = "/run/current-system/sw/bin/code";
