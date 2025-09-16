@@ -56,7 +56,7 @@
     prismlauncher
     teams-for-linux
 
-    # pkgs.unstable.code-cursor
+    pkgs.unstable.code-cursor
     vscode
     vscode-extensions.github.copilot
     vscode-extensions.hashicorp.terraform
