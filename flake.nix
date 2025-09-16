@@ -53,6 +53,11 @@
         specialArgs = {inherit inputs outputs;};
         modules = [./hosts/daedalus];
       };
+
+      hermes = lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/hermes];
+      };
     };
 
     # Standalone home-manager configuration entrypoint

@@ -7,11 +7,6 @@
     histSize = 1000000000;
     histFile = "/home/amaddox/.zsh_history";
 
-    shellAliases = {
-      switch = "cd ~/workspace/github.com/amadd0x/nix-config; make switch_hermes; cd -;";
-      update = "cd ~/workspace/github.com/amadd0x/nix-config; make update; cd -;";
-    };
-
     interactiveShellInit = ''
       export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
       export ZSH_CUSTOM=${pkgs.oh-my-zsh}/share/oh-my-zsh/custom
