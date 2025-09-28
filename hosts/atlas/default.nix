@@ -30,6 +30,7 @@
     glib-networking
     gnumake
     flameshot
+    fswebcam
     termdown
     peek
     inkscape
