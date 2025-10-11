@@ -26,11 +26,11 @@
     fsType = "ext4";
   };
 
-  # fileSystems."/windows" = {
-  #   device = "/dev/disk/by-uuid/2C3A9BF33A9BB7F2";
-  #   fsType = "ntfs";
-  #   options = ["defaults" "noatime" "nls=utf8" "umask=007" "dmask=007" "fmask=017"];
-  # };
+  fileSystems."/windows" = {
+    device = "/dev/disk/by-uuid/2C3A9BF33A9BB7F2";
+    fsType = "ntfs";
+    options = ["defaults" "noatime" "nls=utf8" "umask=007" "dmask=007" "fmask=017"];
+  };
 
   boot.initrd.luks.devices."luks-e0c32b52-f3b7-468e-8848-0c10b4961877".device = "/dev/disk/by-uuid/e0c32b52-f3b7-468e-8848-0c10b4961877";
 
