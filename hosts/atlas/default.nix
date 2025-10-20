@@ -79,6 +79,7 @@
     azure-cli
     pkgs.unstable.scalr-cli
     python313
+    nodejs
 
     ssm-session-manager-plugin
 
