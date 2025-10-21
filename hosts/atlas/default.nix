@@ -57,6 +57,7 @@
     # citrix_workspace_24_02_0
     prismlauncher
     teams-for-linux
+    jira-cli-go
 
     pkgs.unstable.code-cursor
     vscode
