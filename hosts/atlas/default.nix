@@ -58,6 +58,8 @@
     prismlauncher
     teams-for-linux
     jira-cli-go
+    asciinema
+    asciinema-agg
 
     pkgs.unstable.code-cursor
     vscode
