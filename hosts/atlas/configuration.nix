@@ -164,6 +164,14 @@
     magicOrExtension = ''\x7fELF....AI\x02'';
   };
 
+  # Crontab
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "0 9 * * MON  amaddox /home/amaddox/workspace/scripts/automation/weekly-report/weekly-report.sh >> /home/amaddox/workspace/scripts/automation/weekly-report/logs/$(date +\%Y-\%m-\%d).log 2>&1"
+    ];
+  };
+
   # Sops configuration
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
