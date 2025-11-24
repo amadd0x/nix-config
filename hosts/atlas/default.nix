@@ -32,6 +32,7 @@
     flameshot
     fswebcam
     termdown
+    rclone
     peek
     inkscape
     qFlipper
