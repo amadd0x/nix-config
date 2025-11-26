@@ -76,6 +76,7 @@
     nomad
     damon
     packer
+    postgresql
     promql-cli
     ngrok
     lmstudio
