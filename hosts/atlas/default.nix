@@ -82,6 +82,7 @@
     lmstudio
     docker-compose
     azure-cli
+    azuredatastudio
     pkgs.unstable.scalr-cli
     python313
     nodejs
