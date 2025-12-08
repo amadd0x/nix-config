@@ -82,6 +82,7 @@
     lmstudio
     docker-compose
     azure-cli
+    azure-cli-extensions.trustedsigning
     azuredatastudio
     pkgs.unstable.scalr-cli
     python313
