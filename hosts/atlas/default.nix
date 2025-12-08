@@ -81,8 +81,8 @@
     ngrok
     lmstudio
     docker-compose
-    azure-cli
-    azure-cli-extensions.trustedsigning
+    (azure-cli.withExtensions [pkgs.azure-cli-extensions.trustedsigning])
+
     azuredatastudio
     pkgs.unstable.scalr-cli
     python313
@@ -97,9 +97,7 @@
     code-server
   ];
 
-  environment.variables = {
-    EDITOR = "code --wait";
-  };
+  environment.variables = {EDITOR = "code --wait";};
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 }
