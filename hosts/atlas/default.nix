@@ -63,6 +63,7 @@
     jira-cli-go
     asciinema
     asciinema-agg
+    audacity
 
     pkgs.unstable.code-cursor
     vscode
