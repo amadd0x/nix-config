@@ -46,6 +46,7 @@
     experimental-features = "nix-command flakes";
     # Deduplicate and optimize nix store
     auto-optimise-store = true;
+    download-buffer-size = 524288000;
   };
 
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
@@ -71,7 +72,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  system.autoUpgrade = {
+  stdenv.hostPlatform.system.autoUpgrade = {
     enable = true;
     flake = inputs.self.outPath;
     flags = [
@@ -99,7 +100,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.cinnamon.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -117,7 +118,7 @@
 
   # Enable sound with pipewire.
   # sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -183,5 +184,5 @@
   sops.secrets.ts-authkey = {};
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.05";
+  stdenv.hostPlatform.system.stateVersion = "23.05";
 }

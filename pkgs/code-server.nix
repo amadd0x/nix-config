@@ -1,11 +1,11 @@
 {
   lib,
-  nodejs-18_x,
+  nodejs_20,
   makeWrapper,
   stdenv,
   fetchurl,
 }: let
-  nodejs = nodejs-18_x;
+  nodejs = nodejs_20;
 in
   stdenv.mkDerivation rec {
     pname = "code-server";

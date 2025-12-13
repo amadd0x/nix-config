@@ -38,7 +38,7 @@
     qFlipper
     zip
     vlc
-    barrier
+    # barrier
     memtester
     age
     sops
@@ -94,7 +94,7 @@
     steam
 
     # From ./pkgs
-    code-server
+    # code-server
   ];
 
   environment.variables = {EDITOR = "code --wait";};
