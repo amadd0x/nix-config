@@ -72,7 +72,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  stdenv.hostPlatform.system.autoUpgrade = {
+  system.autoUpgrade = {
     enable = true;
     flake = inputs.self.outPath;
     flags = [
@@ -184,5 +184,5 @@
   sops.secrets.ts-authkey = {};
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  stdenv.hostPlatform.system.stateVersion = "23.05";
+  system.stateVersion = "23.05";
 }

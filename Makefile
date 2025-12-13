@@ -3,7 +3,7 @@ switch_atlas:
 	@git diff -U0
 	@sudo nixos-rebuild switch --flake .#atlas > atlas-switch.log || (cat atlas-switch.log | grep --color error && false)
 	@echo -e "\nBuild success. Commiting generation to git"
-	@gen="$(shell nixos-rebuild --flake .#atlas list-generations | grep current | awk '{$$1=$$1};1')"; \
+	@gen="$(shell nixos-rebuild --flake .#atlas list-generations | grep True | awk '{$$1=$$1};1')"; \
 	git commit -am "$$gen"
 
 switch_daedalus:

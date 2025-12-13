@@ -28,6 +28,7 @@
     update-resolv-conf
     xclip
     glib-networking
+    libva-utils
     gnumake
     flameshot
     fswebcam
