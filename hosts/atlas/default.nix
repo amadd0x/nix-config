@@ -32,7 +32,6 @@
     gnumake
     flameshot
     fswebcam
-    nitrogen
     ghostty
     termdown
     rclone
