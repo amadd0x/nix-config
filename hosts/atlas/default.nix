@@ -86,7 +86,6 @@
     docker-compose
     (azure-cli.withExtensions [pkgs.azure-cli-extensions.trustedsigning])
 
-    azuredatastudio
     pkgs.unstable.scalr-cli
     python313
     nodejs
@@ -95,6 +94,7 @@
 
     discord
     steam
+    linux-wallpaperengine
 
     # From ./pkgs
     # code-server
