@@ -32,6 +32,7 @@
     gnumake
     flameshot
     fswebcam
+    nitrogen
     termdown
     rclone
     peek
