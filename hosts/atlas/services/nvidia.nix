@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   services.ollama.enable = true;
   services.ollama.acceleration = "cuda";
   services.open-webui = {
@@ -11,13 +6,12 @@
     port = 1234;
   };
   # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     # driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
-  hardware.graphics.enable = true;
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
 
