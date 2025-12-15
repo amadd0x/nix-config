@@ -32,7 +32,7 @@
     gnumake
     flameshot
     fswebcam
-    tilix
+    ghostty
     termdown
     rclone
     peek
