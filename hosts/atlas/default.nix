@@ -88,6 +88,7 @@
 
     pkgs.unstable.scalr-cli
     python313
+    python313Packages.pip
     python313Packages.setuptools
     python313Packages.distutils-extra
     poetry
