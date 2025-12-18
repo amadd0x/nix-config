@@ -88,6 +88,7 @@
 
     pkgs.unstable.scalr-cli
     python313
+    python313Packages.setuptools
     nodejs
 
     ssm-session-manager-plugin
