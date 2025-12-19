@@ -79,6 +79,7 @@
     pkgs.unstable.awscli2
     nomad
     damon
+    devpod
     packer
     postgresql
     promql-cli
