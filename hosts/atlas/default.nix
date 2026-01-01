@@ -97,10 +97,6 @@
 
     discord
     steam
-    linux-wallpaperengine
-
-    # From ./pkgs
-    # code-server
   ];
 
   environment.variables = {EDITOR = "code --wait";};
