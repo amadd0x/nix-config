@@ -97,6 +97,7 @@
 
     discord
     steam
+    pkgs.unstable.code-server
   ];
 
   environment.variables = {EDITOR = "code --wait";};
