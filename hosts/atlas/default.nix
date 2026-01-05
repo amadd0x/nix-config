@@ -86,7 +86,11 @@
     ngrok
     lmstudio
     docker-compose
-    (azure-cli.withExtensions [pkgs.azure-cli-extensions.trustedsigning])
+    (azure-cli.withExtensions [
+      pkgs.azure-cli-extensions.trustedsigning 
+      pkgs.azure-cli-extensions.automation
+      ]
+    )
 
     pkgs.unstable.scalr-cli
     python313
