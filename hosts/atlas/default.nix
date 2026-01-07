@@ -86,11 +86,14 @@
     ngrok
     lmstudio
     docker-compose
-    (azure-cli.withExtensions [
-      pkgs.azure-cli-extensions.trustedsigning 
-      pkgs.azure-cli-extensions.automation
+    (
+      azure-cli.withExtensions [
+        pkgs.azure-cli-extensions.trustedsigning
+        pkgs.azure-cli-extensions.automation
       ]
     )
+    steampipe
+    steampipePackages.steampipe-plugin-azure
 
     pkgs.unstable.scalr-cli
     python313
