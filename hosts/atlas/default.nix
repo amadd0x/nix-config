@@ -92,8 +92,6 @@
         pkgs.azure-cli-extensions.automation
       ]
     )
-    steampipe
-    steampipePackages.steampipe-plugin-azure
 
     pkgs.unstable.scalr-cli
     python313
