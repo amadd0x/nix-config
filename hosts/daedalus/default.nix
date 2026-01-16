@@ -36,7 +36,7 @@
     tailscale
     cloudflared
 
-    code-server
+    # code-server
     scanmem
   ];
 }

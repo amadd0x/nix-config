@@ -17,10 +17,11 @@
     8082
     8085
     8384 # Syncthing
-    25555 # Rimworld
+    # 25555 # Rimworld
     # 25565 # Minecraft
     # 25575 # Minecraft RCON
     26706 # reactive-resume
+    14159 # necesse
   ];
   networking.firewall.allowedUDPPorts = [
     # 7654 # Satisfactory-wh
