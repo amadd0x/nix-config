@@ -48,6 +48,7 @@
     zsh-powerlevel10k
     zsh-autosuggestions
     zsh-syntax-highlighting
+    cowsay
 
     nil # Nix LSP
     nixd

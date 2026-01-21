@@ -21,7 +21,6 @@
     # 25565 # Minecraft
     # 25575 # Minecraft RCON
     26706 # reactive-resume
-    14159 # necesse
   ];
   networking.firewall.allowedUDPPorts = [
     # 7654 # Satisfactory-wh
@@ -29,6 +28,7 @@
     # 27000 # Avorion game port
     # 27003 # Avorion query port
     # 27021 # Avorion Steam port
+    14159 # necesse
   ];
 
   # Add to /etc/hosts
