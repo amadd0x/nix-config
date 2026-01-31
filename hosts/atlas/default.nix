@@ -68,6 +68,7 @@
     variety
 
     pkgs.unstable.code-cursor
+    pkgs.unstable.antigravity
     vscode
     vscode-extensions.github.copilot
     vscode-extensions.hashicorp.terraform
