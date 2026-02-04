@@ -67,12 +67,12 @@
     audacity
     variety
 
-    pkgs.unstable.code-cursor
+    # pkgs.unstable.code-cursor
     pkgs.unstable.antigravity
-    vscode
-    vscode-extensions.github.copilot
-    vscode-extensions.hashicorp.terraform
-    vscode-extensions.bbenoist.nix
+    # vscode
+    # vscode-extensions.github.copilot
+    # vscode-extensions.hashicorp.terraform
+    # vscode-extensions.bbenoist.nix
 
     go
     goreleaser
