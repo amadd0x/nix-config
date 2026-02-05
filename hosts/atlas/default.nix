@@ -69,10 +69,10 @@
 
     # pkgs.unstable.code-cursor
     pkgs.unstable.antigravity
-    # vscode
-    # vscode-extensions.github.copilot
-    # vscode-extensions.hashicorp.terraform
-    # vscode-extensions.bbenoist.nix
+    vscode
+    vscode-extensions.github.copilot
+    vscode-extensions.hashicorp.terraform
+    vscode-extensions.bbenoist.nix
 
     go
     goreleaser
@@ -92,6 +92,9 @@
       azure-cli.withExtensions [
         pkgs.azure-cli-extensions.trustedsigning
         pkgs.azure-cli-extensions.automation
+        pkgs.azure-cli-extensions.resource-graph
+        pkgs.azure-cli-extensions.ad
+        pkgs.azure-cli-extensions.webapp
       ]
     )
 
