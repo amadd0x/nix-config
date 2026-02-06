@@ -9,9 +9,9 @@ switch_atlas:
 switch_daedalus:
 	alejandra .
 	@git diff -U0
-	@nixos-rebuild --flake .#daedalus --target-host amaddox@daedalus --use-remote-sudo switch &>daedalus-switch.log || (cat daedalus-switch.log | grep --color error && false)
+	@nixos-rebuild --flake .#daedalus --target-host amaddox@daedalus --sudo switch &>daedalus-switch.log || (cat daedalus-switch.log | grep --color error && false)
 	@echo -e "\nBuild success. Commiting generation to git"
-	@gen="$(shell nixos-rebuild --flake .#daedalus --target-host amaddox@daedalus --use-remote-sudo list-generations | grep current | awk '{$$1=$$1};1')"; \
+	@gen="$(shell nixos-rebuild --flake .#daedalus list-generations | grep True | awk '{$$1=$$1};1')"; \
 	git commit -am "$$gen"
 
 switch_hermes:

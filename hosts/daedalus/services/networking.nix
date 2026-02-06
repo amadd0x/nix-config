@@ -9,6 +9,7 @@
     81
     443
     2283 # Immich
+    # 5000 # Registry
     # 7654 # Satisfactory-wh
     # 7777 # Satisfactory
     7474
