@@ -94,10 +94,7 @@
     enable = true;
     setSocketVariable = true;
   };
-  virtualisation.docker.daemon.settings = {
-    insecure-registry = ["192.168.0.112:5000"];
-  };
-
+  virtualisation.docker.extraOptions = "--insecure-registry 192.168.0.112:5000";
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
