@@ -26,13 +26,14 @@
 
   # This will add each flake input as a registry
   # To make nix3 commands consistent with your flake
-  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) (
+    (lib.filterAttrs (_: lib.isType "flake")) inputs
+  );
 
   # This will additionally add your inputs to the system's legacy channels
   nix.nixPath = ["/etc/nix/path"];
   environment.etc =
-    lib.mapAttrs'
-    (name: value: {
+    lib.mapAttrs' (name: value: {
       name = "nix/path/${name}";
       value.source = value.flake;
     })
@@ -90,11 +91,9 @@
 
   # Enable Docker
   virtualisation.docker.enable = true;
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
+  virtualisation.docker.daemon.settings = {
+    insecure-registries = ["192.168.0.112:5000"];
   };
-  virtualisation.docker.extraOptions = "--insecure-registry 192.168.0.112:5000";
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -138,7 +137,11 @@
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
       ];
-      extraGroups = ["wheel" "networkmanager" "docker"];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "docker"
+      ];
     };
   };
 

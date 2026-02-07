@@ -8,9 +8,8 @@
   virtualisation.docker.extraOptions = "--default-ulimit nofile=262144:262144";
 
   virtualisation.docker.enable = true;
-  virtualisation.docker.daemon.settings = {
-    insecure-registries = ["192.168.0.112:5000"];
-  };
+  virtualisation.docker.extraOptions = "--insecure-registry 192.168.0.112:5000";
+
   networking.bridges.br0.interfaces = ["eth0"];
   networking.interfaces.br0.useDHCP = true;
 
