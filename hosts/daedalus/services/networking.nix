@@ -13,11 +13,13 @@
     # 7654 # Satisfactory-wh
     # 7777 # Satisfactory
     7474
+    7756
     8080
     8081
     8082
     8085
     8384 # Syncthing
+    18789
     # 25555 # Rimworld
     # 25565 # Minecraft
     # 25575 # Minecraft RCON
