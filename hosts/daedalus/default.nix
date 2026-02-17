@@ -39,4 +39,5 @@
     # code-server
     scanmem
   ];
+  # environment.variables = {TERM = "xterm-256color";};
 }
