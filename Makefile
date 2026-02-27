@@ -27,6 +27,7 @@ verify_and_repair: gc
 
 update: gc
 	@nix flake update
+	@nix flake update nixpkgs-unstable
 
 gc:
 	nix-collect-garbage
