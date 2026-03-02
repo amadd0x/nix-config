@@ -95,6 +95,7 @@
         pkgs.azure-cli-extensions.resource-graph
         pkgs.azure-cli-extensions.ad
         pkgs.azure-cli-extensions.webapp
+        pkgs.azure-cli-extensions.azure-devops
       ]
     )
 
