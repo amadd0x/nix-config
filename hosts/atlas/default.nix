@@ -73,6 +73,7 @@
     vscode-extensions.github.copilot
     vscode-extensions.hashicorp.terraform
     vscode-extensions.bbenoist.nix
+    pkgs.unstable.claude-code
 
     go
     goreleaser
