@@ -27,6 +27,7 @@
     unrar-wrapper
     update-resolv-conf
     xclip
+    copyq
     glib-networking
     libva-utils
     gnumake
