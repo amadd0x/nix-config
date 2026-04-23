@@ -89,6 +89,7 @@
     promql-cli
     ngrok
     lmstudio
+    rustdesk
     stripe-cli
     docker-compose
     (
