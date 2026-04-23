@@ -89,6 +89,7 @@
     promql-cli
     ngrok
     lmstudio
+    stripe-cli
     docker-compose
     (
       azure-cli.withExtensions [
