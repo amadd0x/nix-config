@@ -8,5 +8,6 @@
     ./networking.nix
     ./nomad.nix
     ./syncthing.nix
+    ./rustdesk.nix
   ];
 }
