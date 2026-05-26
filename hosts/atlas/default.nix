@@ -67,6 +67,7 @@
     asciinema-agg
     audacity
     variety
+    taskwarrior3
 
     # pkgs.unstable.code-cursor
     pkgs.unstable.antigravity
