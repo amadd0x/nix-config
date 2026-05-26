@@ -7,6 +7,7 @@
   networking.networkmanager.enable = true;
   networking.firewall.allowedTCPPorts = [
     2455
+    3002
   ];
 
   # Add to /etc/hosts
