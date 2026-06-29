@@ -17,7 +17,7 @@
       jq
       awscli2
       nomad_1_9
-      docker
+      docker     
     ];
 
     settings = {

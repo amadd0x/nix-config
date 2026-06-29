@@ -89,6 +89,7 @@
     postgresql
     promql-cli
     ngrok
+    termius
     lmstudio
     rustdesk
     stripe-cli
