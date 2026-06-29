@@ -112,6 +112,17 @@
     xkb.variant = "";
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  };
+
+  environment.systemPackages = with pkgs; [
+    xdg-utils
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+  ];
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
