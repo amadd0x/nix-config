@@ -8,6 +8,8 @@
   virtualisation.docker.extraOptions = "--default-ulimit nofile=262144:262144";
 
   virtualisation.docker.enable = true;
+  # pkgs.docker still points at docker_28, which is EOL/insecure-marked
+  virtualisation.docker.package = pkgs.docker_29;
   virtualisation.docker.daemon.settings = {
     insecure-registries = ["192.168.0.112:5000"];
   };
@@ -25,7 +27,7 @@
       jq
       awscli2
       nomad_1_9
-      docker
+      docker_29
       cni-plugins
     ];
 

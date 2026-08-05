@@ -36,6 +36,12 @@
 
   # Add to /etc/hosts
   networking.hosts = {
-    "192.168.0.112" = ["traefik.local" "nomad.traefik.local" "immich.traefik.local"];
+    "192.168.0.112" = [
+      "traefik.local"
+      "nomad.traefik.local"
+      "immich.traefik.local"
+      "paperless.traefik.local"
+      "openhands.traefik.local"
+    ];
   };
 }

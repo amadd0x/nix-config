@@ -76,19 +76,18 @@
 
   system.autoUpgrade = {
     enable = true;
-    flake = inputs.self.outPath;
+    # Must NOT be inputs.self.outPath. That is a /nix/store path, and pairing it
+    # with a lock-file update makes nixos-rebuild write flake.lock back into the
+    # store. With auto-optimise-store hardlinking identical files, one such write
+    # corrupts every store path sharing that file, which then fails the NAR hash
+    # check on any nix copy / nix-copy-closure.
+    flake = "github:amadd0x/nix-config";
     flags = [
-      "--update-input"
-      "nixpkgs"
       "-L"
     ];
     dates = "09:00";
     randomizedDelaySec = "45min";
   };
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "docker-28.5.2"
-  ];
 
   ############
   # Services #
@@ -96,6 +95,8 @@
 
   # Enable Docker
   virtualisation.docker.enable = true;
+  # pkgs.docker still points at docker_28, which is EOL/insecure-marked
+  virtualisation.docker.package = pkgs.docker_29;
   virtualisation.docker.daemon.settings = {
     insecure-registries = ["192.168.0.112:5000"];
   };
