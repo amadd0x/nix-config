@@ -5,6 +5,7 @@
 }: {
   networking.hostName = "daedalus";
   networking.firewall.allowedTCPPorts = [
+    53
     80
     81
     443
@@ -26,6 +27,7 @@
     26706 # reactive-resume
   ];
   networking.firewall.allowedUDPPorts = [
+    53
     # 7654 # Satisfactory-wh
     # 7777 # Satisfactory
     # 27000 # Avorion game port
