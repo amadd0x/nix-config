@@ -33,7 +33,7 @@
     # 27000 # Avorion game port
     # 27003 # Avorion query port
     # 27021 # Avorion Steam port
-    14159 # necesse
+    # 14159 # necesse
   ];
 
   # Add to /etc/hosts
