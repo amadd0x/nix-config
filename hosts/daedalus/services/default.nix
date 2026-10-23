@@ -6,5 +6,6 @@
     ./tailscale.nix
     ./syncthing.nix
     ./monitoring.nix
+    ./backup.nix
   ];
 }

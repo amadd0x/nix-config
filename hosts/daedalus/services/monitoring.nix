@@ -4,6 +4,8 @@
     enable = true;
     port = 9100;
     enabledCollectors = ["systemd"];
+    # *.prom files written by other services, e.g. backup.nix's backup status.
+    extraFlags = ["--collector.textfile.directory=/var/lib/prometheus-node-exporter-text"];
     # Not openFirewall: that opens 9100 to the whole LAN.
   };
 

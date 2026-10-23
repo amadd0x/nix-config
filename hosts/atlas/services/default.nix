@@ -9,5 +9,6 @@
     ./nomad.nix
     ./syncthing.nix
     ./rustdesk.nix
+    ./restic-server.nix
   ];
 }
