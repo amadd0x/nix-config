@@ -108,6 +108,15 @@
           ];
         }
       ];
+      # Scraped by the prometheus nomad job at :4646/v1/metrics?format=prometheus.
+      # publish_allocation_metrics is what gives per-task memory and cpu used
+      # vs. reserved, the data right-sizing jobs depends on.
+      telemetry = {
+        prometheus_metrics = true;
+        publish_allocation_metrics = true;
+        publish_node_metrics = true;
+        collection_interval = "10s";
+      };
       bind_addr = "0.0.0.0";
       data_dir = "/var/lib/nomad";
       log_rotate_bytes = 1000000;

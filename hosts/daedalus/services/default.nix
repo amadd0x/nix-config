@@ -5,5 +5,6 @@
     ./networking.nix
     ./tailscale.nix
     ./syncthing.nix
+    ./monitoring.nix
   ];
 }
