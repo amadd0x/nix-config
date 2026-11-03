@@ -36,6 +36,16 @@
     # 14159 # necesse
   ];
 
+  # daedalus resolves via MagicDNS (100.100.100.100), which forwards to pihole
+  # running on daedalus itself. When pihole is down (e.g. after a power outage)
+  # docker can't pull pihole's own image. Append public resolvers so lookups
+  # fall through on SERVFAIL/unreachable; openresolv appends these even though
+  # tailscale registers its nameserver as exclusive. glibc uses at most 3.
+  networking.resolvconf.extraConfig = ''
+    name_servers_append="1.1.1.1 9.9.9.9"
+  '';
+  networking.resolvconf.extraOptions = ["timeout:2"];
+
   # Add to /etc/hosts
   networking.hosts = {
     "192.168.0.112" = [
