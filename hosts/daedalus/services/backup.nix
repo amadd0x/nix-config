@@ -44,6 +44,7 @@
   gameSaves = [
     "/media/data/games/ark-asa/server-files/ShooterGame/Saved"
     "/media/data/games/factorio/saves"
+    "/media/data/games/icarus/data"
     "/media/data/games/minecraft/data"
     "/media/data/games/necesse/saves"
     "/media/data/games/palworld/Pal/Saved"
