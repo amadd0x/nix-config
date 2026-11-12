@@ -199,6 +199,12 @@
     stdenv.cc.cc.lib
   ];
 
+  # direnv + nix-direnv, hooked into zsh: loads a project's `use flake` dev shell on cd
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   # Sops configuration
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";

@@ -59,6 +59,8 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
+  # Git LFS: installs git-lfs and adds its filter to ~/.config/git/config
+  programs.git.lfs.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
