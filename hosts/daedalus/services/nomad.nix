@@ -90,6 +90,11 @@
         enabled = true;
         bootstrap_expect = 1;
       };
+      # LAB-9. Anonymous requests are denied: there is no anonymous policy. Tokens and
+      # policies are in nomad-jobs/acl/ (bootstrap.sh, README.md).
+      acl = {
+        enabled = true;
+      };
       plugin = [
         {raw_exec = [{config = [{enabled = true;}];}];}
         {

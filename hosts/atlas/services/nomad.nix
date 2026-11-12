@@ -45,6 +45,10 @@
         {docker = [{config = [{volumes = [{enabled = true;}];}];}];}
         {nomad-device-nvidia = [{config = [{enabled = true;} {fingerprint_period = "1m";}];}];}
       ];
+      # LAB-9: must match the server (daedalus); see nomad-jobs/acl/README.md.
+      acl = {
+        enabled = true;
+      };
       bind_addr = "0.0.0.0";
       data_dir = "/var/lib/nomad";
       log_rotate_bytes = 1000000;
