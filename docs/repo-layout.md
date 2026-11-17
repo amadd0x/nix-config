@@ -79,13 +79,13 @@ A host's config is layered. The bottom layers are shared, the top is specific:
 
 ```
 hosts/hermes/default.nix
- ├── ../common/global            every machine: Home Manager, OpenSSH, known_hosts, overlays
- ├── ../common/optional/dev.nix  only workstations: dev tooling, Docker, direnv
+ ├── ../common/global                    every machine: Nix settings, locale, OpenSSH, overlays, Home Manager
+ ├── ../common/optional/dev.nix          dev tooling, Docker, direnv
+ ├── ../common/optional/workstation.nix  desktop machines: zsh, audio, printing, shared apps
  ├── ../common/optional/tailscale.nix
- ├── ./configuration.nix         this machine: hostname, bootloader, desktop, users
- ├── ./hardware-configuration.nix  generated: kernel modules, CPU, (filesystems)
- ├── ./disko.nix                 this machine's disk layout
- └── ./shell/zsh.nix
+ ├── ./configuration.nix                 this machine: hostname, bootloader, desktop, users
+ ├── ./hardware-configuration.nix        generated: kernel modules, CPU, (filesystems)
+ └── ./disko.nix                         this machine's disk layout
 ```
 
 Files in a host directory:
@@ -97,14 +97,16 @@ Files in a host directory:
 | `hardware-configuration.nix` | Detected hardware. Regenerate with `nixos-generate-config` rather than editing. | Rarely |
 | `disko.nix` | Partitions, encryption, filesystems (hermes only so far) | Yes |
 | `services/` | One file per service (Syncthing, Tailscale, backups, ...) | Yes |
-| `shell/` | Shell config | Yes |
+| `shell/` | Shell config, if it differs from the shared `common/optional/zsh.nix` (daedalus) | Yes |
 | `secrets/secrets.yaml` | Encrypted secrets, edited with `sops` | Via `sops` only |
 | `ssh_host_ed25519_key.pub` | The machine's SSH identity, pinned in every other host's known_hosts | No |
 
-**`common/global/`** holds things every machine should have: Home Manager
-wiring, the overlays, `allowUnfree`, hardened OpenSSH, and auto-upgrade (off
-unless a host enables it). hermes and daedalus import it. atlas predates it and
-still sets these up itself; moving it onto `common/global` is a pending cleanup.
+**`common/global/`** holds things every machine should have and every host
+imports: Nix settings (flakes, store optimisation, registry/`NIX_PATH` pinned to
+the flake's inputs), time zone and locale, Home Manager wiring, the overlays,
+`allowUnfree`, hardened OpenSSH, and auto-upgrade (off unless a host enables it).
+Values are set with `lib.mkDefault` where a host might reasonably differ, so a
+host can just set its own.
 
 **`common/optional/`** holds pieces that only some machines want. Import one by
 path from a host's `default.nix`. Adding a new optional module is just adding a

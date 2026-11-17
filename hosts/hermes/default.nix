@@ -1,50 +1,16 @@
-# System packages, ./pkgs, and shell configuration
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+# Entrypoint for hermes: imports + hermes-only packages.
+{pkgs, ...}: {
   imports = [
     ./configuration.nix
     ./hardware-configuration.nix
-    ./shell/zsh.nix
     ../common/global
     ../common/optional/dev.nix
+    ../common/optional/workstation.nix
     ../common/optional/tailscale.nix
   ];
 
-  # Hermes-specific apps. Shared dev tooling lives in ../common/optional/dev.nix.
+  # Hermes-only apps. Shared ones live in ../common/optional/{workstation,dev}.nix.
   environment.systemPackages = with pkgs; [
-    remmina
-    mailutils
-    busybox
-    unrar-wrapper
-    xclip
-    glib-networking
-    flameshot
-    termdown
-    peek
-    inkscape
-    qFlipper
-    vlc
-    memtester
-    ghostty
-    zsh
-    zsh-powerlevel10k
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-
-    google-chrome
-    slack
-    prismlauncher
-    teams-for-linux
     pkgs.unstable.code-cursor
-    lmstudio
-
-    discord
-    steam
-    pkgs.unstable.code-server
   ];
-
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 }

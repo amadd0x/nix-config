@@ -8,9 +8,9 @@
     [
       inputs.home-manager.nixosModules.home-manager
       ./auto-upgrade.nix
-      # ./locale.nix
+      ./locale.nix
+      ./nix.nix
       ./openssh.nix
-      # ./tailscale.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 

@@ -1,64 +1,27 @@
-# System packages, ./pkgs, and shell configuration
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+# Entrypoint for atlas: imports + atlas-only packages.
+{pkgs, ...}: {
   imports = [
     ./configuration.nix
     ./hardware-configuration.nix
-    ./shell/zsh.nix
     ./services
+    ../common/global
     ../common/optional/dev.nix
-    ../common/optional/known-hosts.nix
+    ../common/optional/workstation.nix
   ];
 
+  # Atlas-only apps. Shared ones live in ../common/optional/{workstation,dev}.nix.
   environment.systemPackages = with pkgs; [
-    # Atlas-specific apps. Shared dev tooling lives in ../common/optional/dev.nix.
-    remmina
-    mailutils
-    busybox
-    unrar-wrapper
-    xclip
     copyq
-    glib-networking
     libva-utils
-    flameshot
     fswebcam
-    ghostty
-    termdown
-    peek
-    inkscape
-    qFlipper
-    vlc
-    memtester
-    zsh
-    zsh-powerlevel10k
-    zsh-autosuggestions
-    zsh-syntax-highlighting
     cowsay
-
-    google-chrome
     firefox
-    slack
-    prismlauncher
-    teams-for-linux
     asciinema
     asciinema-agg
     audacity
     variety
-
-    pkgs.unstable.antigravity
     termius
-    lmstudio
     rustdesk
-
-    discord
-    steam
-    pkgs.unstable.code-server
+    pkgs.unstable.antigravity
   ];
-
-  environment.variables = {EDITOR = "code --wait";};
-
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 }

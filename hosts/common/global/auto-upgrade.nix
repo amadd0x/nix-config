@@ -10,11 +10,13 @@
     enable = lib.mkDefault false;
     dates = lib.mkDefault "09:00";
     randomizedDelaySec = lib.mkDefault "45min";
-    flags = [
-      "--refresh"
-      "-L"
-    ];
-    # Must NOT be inputs.self.outPath -- see the note in hosts/atlas/configuration.nix.
+    # The module already passes --refresh.
+    flags = ["-L"];
+    # Must NOT be inputs.self.outPath. That is a /nix/store path, and pairing it
+    # with a lock-file update makes nixos-rebuild write flake.lock back into the
+    # store. With auto-optimise-store hardlinking identical files, one such write
+    # corrupts every store path sharing that file, which then fails the NAR hash
+    # check on any nix copy / nix-copy-closure.
     flake = lib.mkDefault "github:amadd0x/nix-config";
   };
 

@@ -1,93 +1,28 @@
 {
-  inputs,
-  outputs,
   lib,
-  config,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
     inputs.sops-nix.nixosModules.sops
   ];
 
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      allowUnfree = true;
-    };
-  };
+  # Overlays, allowUnfree, flakes, registry, locale, OpenSSH and auto-upgrade
+  # defaults come from ../common/global; audio, printing and zsh from
+  # ../common/optional/workstation.nix.
 
-  # This will add each flake input as a registry
-  # To make nix3 commands consistent with your flake
-  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) (
-    (lib.filterAttrs (_: lib.isType "flake")) inputs
-  );
-
-  # This will additionally add your inputs to the system's legacy channels
-  nix.nixPath = ["/etc/nix/path"];
-  environment.etc =
-    lib.mapAttrs' (name: value: {
-      name = "nix/path/${name}";
-      value.source = value.flake;
-    })
-    config.nix.registry;
-
-  # Add ~/.local/bin/ to $PATH
-  environment.localBinInPath = true;
-
-  nix.settings = {
-    # Enable flakes and new 'nix' command
-    experimental-features = "nix-command flakes";
-    # Deduplicate and optimize nix store
-    auto-optimise-store = true;
-    download-buffer-size = 524288000;
-  };
+  nix.settings.download-buffer-size = 524288000;
 
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
-
-  time.timeZone = "America/Chicago";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 10;
 
-  system.autoUpgrade = {
-    enable = true;
-    # Must NOT be inputs.self.outPath. That is a /nix/store path, and pairing it
-    # with a lock-file update makes nixos-rebuild write flake.lock back into the
-    # store. With auto-optimise-store hardlinking identical files, one such write
-    # corrupts every store path sharing that file, which then fails the NAR hash
-    # check on any nix copy / nix-copy-closure.
-    flake = "github:amadd0x/nix-config";
-    flags = [
-      "-L"
-    ];
-    dates = "09:00";
-    randomizedDelaySec = "45min";
-  };
+  # Pulls this repo from GitHub daily (settings in ../common/global/auto-upgrade.nix).
+  system.autoUpgrade.enable = true;
 
   ############
   # Services #
@@ -97,18 +32,10 @@
   virtualisation.docker.daemon.settings = {
     insecure-registries = ["192.168.0.112:5000"];
   };
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
+  # Cinnamon desktop
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.cinnamon.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
-  };
 
   xdg.portal = {
     enable = true;
@@ -122,54 +49,17 @@
     xdg-desktop-portal-gtk
   ];
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   services.envfs.enable = true;
 
-  # Enable x2go server
-  # services.x2goserver.enable = true;
-
-  # Enable sound with pipewire.
-  # sound.enable = true;
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-  };
-
-  users.defaultUserShell = pkgs.zsh;
-
-  users.users = {
-    amaddox = {
-      isNormalUser = true;
-      description = "Austin Maddox";
-      shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [
-      ];
-      extraGroups = [
-        "wheel"
-        "networkmanager"
-        "docker"
-      ];
-    };
-  };
-
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
-  services.openssh = {
-    enable = true;
-    settings = {
-      # Forbid root login through SSH.
-      PermitRootLogin = "no";
-      # Use keys only. Remove if you want to SSH using password (not recommended)
-      PasswordAuthentication = false;
-    };
+  users.users.amaddox = {
+    isNormalUser = true;
+    description = "Austin Maddox";
+    shell = pkgs.zsh;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "docker"
+    ];
   };
 
   # Run appimages with a nix interpreter by default
