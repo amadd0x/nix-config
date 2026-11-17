@@ -34,9 +34,13 @@
 
   boot.initrd.luks.devices."luks-e0c32b52-f3b7-468e-8848-0c10b4961877".device = "/dev/disk/by-uuid/e0c32b52-f3b7-468e-8848-0c10b4961877";
 
+  # Shared ESP on the 870 EVO, alongside Windows Boot Manager, so systemd-boot
+  # auto-detects Windows. The old ESP (410A-A447) has been wiped and its
+  # firmware entries removed. (sdX names are unstable here; rely on UUIDs.)
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/410A-A447";
+    device = "/dev/disk/by-uuid/F2CE-B80A";
     fsType = "vfat";
+    options = ["fmask=0077" "dmask=0077"];
   };
 
   swapDevices = [];
