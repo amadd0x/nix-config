@@ -59,4 +59,10 @@
       };
     };
   };
+
+  # Nomad fingerprints the default interface and advertises 192.168.0.118, which
+  # DHCP assigns during boot. The upstream unit already waits for
+  # network-online.target (which needs NetworkManager-wait-online enabled); the
+  # slower restart is a fallback so a few early failures don't hit the start limit.
+  systemd.services.nomad.serviceConfig.RestartSec = lib.mkForce "5s";
 }
