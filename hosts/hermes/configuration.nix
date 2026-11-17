@@ -110,9 +110,6 @@
 
   # Sudo keeps its password on the laptop; remote deploys use --ask-sudo-password.
 
-  # Root SSH is not needed: deploys connect as amaddox and elevate with sudo.
-  services.openssh.settings.PermitRootLogin = lib.mkForce "no";
-
   programs.firefox.enable = true;
 
   environment.variables = {

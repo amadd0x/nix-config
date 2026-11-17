@@ -6,7 +6,8 @@
     settings = {
       # Harden
       PasswordAuthentication = false;
-      PermitRootLogin = "yes";
+      # Deploys connect as the regular user and elevate with sudo.
+      PermitRootLogin = "no";
       # Automatically remove stale sockets
       StreamLocalBindUnlink = "yes";
       # Allow forwarding ports to everywhere
