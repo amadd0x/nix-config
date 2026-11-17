@@ -47,8 +47,13 @@ switch_daedalus:
 switch_hermes:
 	@$(MAKE) --no-print-directory switch HOST=hermes
 
-# Fresh install of hermes from atlas (ERASES THE DISK). See hosts/hermes/INSTALL.md.
+# Fresh install of hermes from atlas (ERASES THE DISK). See docs/adding-a-host.md.
 #   make install_hermes TARGET=root@<installer-ip> LUKS_KEY=/path/to/passphrase-file
+# Default kexecs into nixos-anywhere's installer first, which is required when the
+# target runs from the disk being wiped. That image has no Wi-Fi, so on Wi-Fi boot
+# the target from a live USB instead and pass PHASES=disko,install to skip kexec.
+# Never skip kexec when the target is running from its own disk.
+PHASES ?= kexec,disko,install
 install_hermes:
 	@test -n "$(TARGET)" || { echo "Set TARGET=root@<installer-ip>"; false; }
 	@test -f "$(LUKS_KEY)" || { echo "Set LUKS_KEY=<file containing the LUKS passphrase>"; false; }
@@ -57,7 +62,7 @@ install_hermes:
 		--target-host $(TARGET) \
 		--disk-encryption-keys /tmp/secret.key $(LUKS_KEY) \
 		--generate-hardware-config nixos-generate-config ./hosts/hermes/hardware-configuration.nix \
-		--no-reboot \
+		--phases $(PHASES) \
 		$(if $(EXTRA_FILES),--extra-files $(EXTRA_FILES))
 	@echo -e "\nInstalled. Set amaddox's password, then reboot:"
 	@echo "  ssh -t $(TARGET) nixos-enter --root /mnt -c \"'passwd amaddox'\""
