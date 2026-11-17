@@ -3,10 +3,10 @@
 
   inputs = {
     sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    hardware.url = "github:nixos/nixos-hardware";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.11";
@@ -41,7 +41,8 @@
       });
   in {
     inherit lib;
-    formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
+    # Same formatter `make switch` runs, so `nix fmt` doesn't restyle the repo.
+    formatter = forEachSystem (pkgs: pkgs.alejandra);
     packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
     overlays = import ./overlays {inherit inputs;};
     nixosModules = import ./modules/nixos;

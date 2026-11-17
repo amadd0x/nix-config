@@ -55,7 +55,6 @@ overwritten.
 | `nixpkgs` | The package set and NixOS modules, tracking a **stable release** (`nixos-25.11`) |
 | `nixpkgs-unstable` | Newer package versions, used per package as `pkgs.unstable.<name>` |
 | `home-manager` | Per-user configuration. Its release must match `nixpkgs`. |
-| `hardware` | [nixos-hardware](https://github.com/NixOS/nixos-hardware) tweaks for specific laptops and boards |
 | `sops-nix` | Decrypts secrets on the machine (see [secrets.md](secrets.md)) |
 | `disko` | Declarative disk partitioning, used for fresh installs |
 
