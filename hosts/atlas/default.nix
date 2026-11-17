@@ -1,5 +1,9 @@
 # Entrypoint for atlas: imports + atlas-only packages.
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./configuration.nix
     ./hardware-configuration.nix
@@ -23,5 +27,7 @@
     termius
     rustdesk
     pkgs.unstable.antigravity-ide
+    # Horizon launcher (FHS env, self-update off: updates come from flake.lock).
+    inputs.horizon.packages.${pkgs.stdenv.hostPlatform.system}.horizon-launcher
   ];
 }

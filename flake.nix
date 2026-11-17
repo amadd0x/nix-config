@@ -15,6 +15,11 @@
     # Declarative disk partitioning (used by hermes / nixos-anywhere)
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Horizon (Minecraft Java 26.3 in Rust): launcher for atlas. Not following our nixpkgs:
+    # it's built and tested against its own nixos-unstable pin. Update with
+    # `nix flake update horizon`.
+    horizon.url = "github:horizon-rust/horizon";
   };
 
   outputs = {
