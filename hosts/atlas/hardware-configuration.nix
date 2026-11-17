@@ -17,7 +17,9 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/49f68f15-f8a3-496a-b21b-b0e1b6383790";
+    # The opened LUKS mapping (ext4 UUID 49f68f15-...). 26.05's systemd initrd
+    # needs /dev/mapper/<luks name> here, or it can time out at the passphrase prompt.
+    device = "/dev/mapper/luks-e0c32b52-f3b7-468e-8848-0c10b4961877";
     fsType = "ext4";
   };
 

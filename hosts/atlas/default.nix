@@ -22,6 +22,6 @@
     variety
     termius
     rustdesk
-    pkgs.unstable.antigravity
+    pkgs.unstable.antigravity-ide
   ];
 }

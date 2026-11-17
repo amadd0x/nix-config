@@ -52,7 +52,7 @@ overwritten.
 
 | Input | What it provides |
 |---|---|
-| `nixpkgs` | The package set and NixOS modules, tracking a **stable release** (`nixos-25.11`) |
+| `nixpkgs` | The package set and NixOS modules, tracking a **stable release** (`nixos-26.05`) |
 | `nixpkgs-unstable` | Newer package versions, used per package as `pkgs.unstable.<name>` |
 | `home-manager` | Per-user configuration. Its release must match `nixpkgs`. |
 | `sops-nix` | Decrypts secrets on the machine (see [secrets.md](secrets.md)) |

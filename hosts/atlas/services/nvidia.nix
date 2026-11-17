@@ -1,10 +1,4 @@
 {config, ...}: {
-  services.ollama.enable = true;
-  services.ollama.acceleration = "cuda";
-  services.open-webui = {
-    enable = true;
-    port = 1234;
-  };
   # Enable OpenGL
   hardware.graphics = {
     enable = true;

@@ -21,23 +21,35 @@ HOST ?= $(shell hostname)
 # Remote hosts whose sudo needs a password (prompted once by nixos-rebuild).
 ASK_SUDO_HOSTS := hermes
 
+# nixos-rebuild action: `switch` activates now; `boot` activates on next reboot
+# (needed when a change can't be applied live, e.g. a release upgrade).
+ACTION ?= switch
+
 # `make switch`              -> rebuild this machine
 # `make switch HOST=hermes`  -> build here, deploy to hermes over ssh (tailnet)
+# `make boot [HOST=...]`     -> same, but takes effect after a reboot
 switch:
 	alejandra .
 	@git diff -U0
 	@if [ "$(HOST)" = "$$(hostname)" ]; then \
-		sudo nixos-rebuild switch --flake .#$(HOST); \
+		sudo nixos-rebuild $(ACTION) --flake .#$(HOST); \
 	else \
-		nixos-rebuild switch --flake .#$(HOST) --target-host amaddox@$(HOST) --sudo \
+		nixos-rebuild $(ACTION) --flake .#$(HOST) --target-host amaddox@$(HOST) --sudo \
 			$(if $(filter $(HOST),$(ASK_SUDO_HOSTS)),--ask-sudo-password); \
-	fi 2>&1 | tee $(HOST)-switch.log
-	@echo -e "\nBuild success. Commiting generation to git"
-	@if [ "$(HOST)" = "$$(hostname)" ]; then \
+	fi 2>&1 | tee $(HOST)-$(ACTION).log
+	@if [ "$(ACTION)" != switch ]; then \
+		echo -e "\nBuilt. Reboot $(HOST) to use it; commit the change yourself."; \
+		exit 0; \
+	fi; \
+	echo -e "\nBuild success. Commiting generation to git"; \
+	if [ "$(HOST)" = "$$(hostname)" ]; then \
 		$(call commit_generation,nixos-rebuild list-generations); \
 	else \
 		$(call commit_generation,ssh amaddox@$(HOST) nixos-rebuild list-generations); \
 	fi
+
+boot:
+	@$(MAKE) --no-print-directory switch ACTION=boot
 
 # Shortcuts kept for muscle memory
 switch_atlas:
