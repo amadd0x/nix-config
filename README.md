@@ -4,6 +4,12 @@
 
 This repository contains my personal nix configs. I am learning.  If you want to re-use anything here your mileage may vary.  If you're learning as well, here are some resources I've found helpful:
 
+### Docs
+
+- [How this repo is organized](docs/repo-layout.md): start here if you're new to NixOS or want to adapt this config
+- [Adding a host](docs/adding-a-host.md): new machine or reinstall, with nixos-anywhere + disko
+- [Managing secrets](docs/secrets.md): sops-nix with age, safely in a public repo
+
 
 ### Starter Config
 https://github.com/Misterio77/nix-starter-configs
