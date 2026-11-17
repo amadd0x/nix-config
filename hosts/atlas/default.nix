@@ -9,108 +9,49 @@
     ./hardware-configuration.nix
     ./shell/zsh.nix
     ./services
+    ../common/optional/dev.nix
+    ../common/optional/known-hosts.nix
   ];
 
   environment.systemPackages = with pkgs; [
-    fd
-    jq
-    gh
-    git
-    openvpn
-    openvpn3
-    openssl
+    # Atlas-specific apps. Shared dev tooling lives in ../common/optional/dev.nix.
     remmina
-    coreutils
     mailutils
-    shellcheck
     busybox
     unrar-wrapper
-    update-resolv-conf
     xclip
     copyq
     glib-networking
     libva-utils
-    gnumake
     flameshot
     fswebcam
     ghostty
     termdown
-    rclone
     peek
     inkscape
     qFlipper
-    zip
     vlc
-    # barrier
     memtester
-    age
-    sops
     zsh
     zsh-powerlevel10k
     zsh-autosuggestions
     zsh-syntax-highlighting
     cowsay
 
-    nil # Nix LSP
-    nixd
-    nixfmt # Nix formatter
-    alejandra
-
     google-chrome
     firefox
     slack
-    # citrix_workspace_24_02_0
     prismlauncher
     teams-for-linux
-    jira-cli-go
     asciinema
     asciinema-agg
     audacity
     variety
-    taskwarrior3
 
-    # pkgs.unstable.code-cursor
     pkgs.unstable.antigravity
-    vscode
-    vscode-extensions.github.copilot
-    vscode-extensions.hashicorp.terraform
-    vscode-extensions.bbenoist.nix
-    pkgs.unstable.claude-code
-
-    go
-    goreleaser
-    tfswitch
-    tfsec
-    pkgs.unstable.awscli2
-    nomad
-    damon
-    devpod
-    packer
-    postgresql
-    promql-cli
-    ngrok
     termius
     lmstudio
     rustdesk
-    stripe-cli
-    docker-compose
-    (
-      azure-cli.withExtensions [
-        pkgs.azure-cli-extensions.trustedsigning
-        pkgs.azure-cli-extensions.automation
-        pkgs.azure-cli-extensions.resource-graph
-        pkgs.azure-cli-extensions.ad
-        pkgs.azure-cli-extensions.webapp
-        pkgs.azure-cli-extensions.azure-devops
-      ]
-    )
-
-    pkgs.unstable.scalr-cli
-    python313
-    poetry
-    nodejs
-
-    ssm-session-manager-plugin
 
     discord
     steam

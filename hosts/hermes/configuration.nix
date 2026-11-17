@@ -1,24 +1,16 @@
 {
   inputs,
-  outputs,
   lib,
   config,
   pkgs,
   ...
 }: {
   imports = [
-    # Include the results of the hardware scan.
-    # ./hardware-configuration.nix
+    inputs.disko.nixosModules.disko
+    ./disko.nix
   ];
 
-  nixpkgs = {
-    overlays = [
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-    ];
-    config = {allowUnfree = true;};
-  };
+  # Overlays + allowUnfree come from ../common/global.
 
   # This will add each flake input as a registry
   # To make nix3 commands consistent with your flake
@@ -42,20 +34,16 @@
     experimental-features = "nix-command flakes";
     # Deduplicate and optimize nix store
     auto-optimise-store = true;
+    # Lets `nixos-rebuild --target-host` from atlas copy unsigned store paths in.
+    trusted-users = ["root" "amaddox"];
   };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+  networking.hostName = "hermes";
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -76,14 +64,8 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
-
-  # Enable Tailscale VPN
-  services.tailscale.enable = true;
-
   # Enable the KDE Plasma Desktop Environment.
+  services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
@@ -100,7 +82,6 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   # Enable sound with pipewire.
-  # services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -109,47 +90,34 @@
     pulse.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  # Firmware updates (BIOS/Thunderbolt/etc.) via `fwupdmgr`
+  services.fwupd.enable = true;
 
+  users.defaultUserShell = pkgs.zsh;
   users.users.amaddox = {
     isNormalUser = true;
     description = "Austin Maddox";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     shell = pkgs.zsh;
+    # Fallback for when Tailscale SSH is unavailable (atlas: ~/.ssh/daedalus).
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEKt24WTdgQVimenVCTp+MLtOOS4wj3jTv4QeKH2GApT"
+    ];
     packages = with pkgs; [
       kdePackages.kate
     ];
   };
 
+  # Sudo keeps its password on the laptop; remote deploys use --ask-sudo-password.
+
+  # Root SSH is not needed: deploys connect as amaddox and elevate with sudo.
+  services.openssh.settings.PermitRootLogin = lib.mkForce "no";
+
   programs.firefox.enable = true;
 
-  users.defaultUserShell = pkgs.zsh;
-  programs = {
-    zsh = {
-      enable = true;
-      autosuggestions.enable = true;
-      zsh-autoenv.enable = true;
-      promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      ohMyZsh = {
-        enable = true;
-        theme = "powerlevel10k";
-        plugins = [
-          "git"
-          "history"
-        ];
-      };
-    };
-  };
-
   environment.variables = {
-    EDITOR = "/run/current-system/sw/bin/code";
-    SUDO_EDITOR = "/run/current-system/sw/bin/code";
-    VISUAL = "/run/current-system/sw/bin/code";
+    EDITOR = "code --wait";
   };
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  system.stateVersion = "25.05"; # Don't touch this
+  system.stateVersion = "25.11"; # Fresh install; don't change after.
 }

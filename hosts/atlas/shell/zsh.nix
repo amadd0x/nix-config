@@ -8,8 +8,9 @@
     histFile = "/home/amaddox/.zsh_history";
 
     shellAliases = {
-      switch = "cd ~/workspace/github.com/amadd0x/nix-config; make switch_hermes; cd -;";
-      update = "cd ~/workspace/github.com/amadd0x/nix-config; make update; cd -;";
+      # Deploys this host; `make -C ~/nix-config switch HOST=<host>` deploys another.
+      switch = "make -C ~/nix-config switch";
+      update = "make -C ~/nix-config update";
     };
 
     interactiveShellInit = ''

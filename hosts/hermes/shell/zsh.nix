@@ -7,6 +7,12 @@
     histSize = 1000000000;
     histFile = "/home/amaddox/.zsh_history";
 
+    shellAliases = {
+      # Deploys this host; `make -C ~/nix-config switch HOST=<host>` deploys another.
+      switch = "make -C ~/nix-config switch";
+      update = "make -C ~/nix-config update";
+    };
+
     interactiveShellInit = ''
       export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
       export ZSH_CUSTOM=${pkgs.oh-my-zsh}/share/oh-my-zsh/custom

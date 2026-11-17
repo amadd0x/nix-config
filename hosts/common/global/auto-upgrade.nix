@@ -4,19 +4,18 @@
   pkgs,
   lib,
   ...
-}: let
-  inherit (config.networking) hostName;
-  # Only enable auto upgrade if current config came from a clean tree
-  # This avoids accidental auto-upgrades when working locally.
-  isClean = inputs.self ? rev;
-in {
+}: {
   system.autoUpgrade = {
-    enable = isClean;
-    dates = "hourly";
+    # Opt-in per host: set `system.autoUpgrade.enable = true;` in a host config.
+    enable = lib.mkDefault false;
+    dates = lib.mkDefault "09:00";
+    randomizedDelaySec = lib.mkDefault "45min";
     flags = [
       "--refresh"
+      "-L"
     ];
-    flake = "git://m7.rs/nix-config?ref=release-${hostName}";
+    # Must NOT be inputs.self.outPath -- see the note in hosts/atlas/configuration.nix.
+    flake = lib.mkDefault "github:amadd0x/nix-config";
   };
 
   # Only run if current config (self) is older than the new one.

@@ -93,10 +93,7 @@
   # Services #
   ############
 
-  # Enable Docker
-  virtualisation.docker.enable = true;
-  # pkgs.docker still points at docker_28, which is EOL/insecure-marked
-  virtualisation.docker.package = pkgs.docker_29;
+  # Docker itself is enabled in ../common/optional/dev.nix
   virtualisation.docker.daemon.settings = {
     insecure-registries = ["192.168.0.112:5000"];
   };
@@ -192,17 +189,6 @@
     systemCronJobs = [
       "0 9 * * MON  amaddox /home/amaddox/workspace/scripts/automation/weekly-report/weekly-report.sh >> /home/amaddox/workspace/scripts/automation/weekly-report/logs/$(date +\%Y-\%m-\%d).log 2>&1"
     ];
-  };
-
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc.lib
-  ];
-
-  # direnv + nix-direnv, hooked into zsh: loads a project's `use flake` dev shell on cd
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
   };
 
   # Sops configuration
