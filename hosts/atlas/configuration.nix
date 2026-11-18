@@ -37,14 +37,13 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
     xdgOpenUsePortal = true;
   };
 
+  # The portal packages come from xdg.portal (Cinnamon adds the gtk and xapp
+  # portals), so they aren't listed here or in extraPortals.
   environment.systemPackages = with pkgs; [
     xdg-utils
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
   ];
 
   services.envfs.enable = true;
