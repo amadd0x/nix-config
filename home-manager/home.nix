@@ -18,6 +18,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    ./git-ssh.nix
   ];
 
   nixpkgs = {
@@ -56,11 +57,24 @@
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
-  # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
-  # Git LFS: installs git-lfs and adds its filter to ~/.config/git/config
-  programs.git.lfs.enable = true;
+
+  # Atlas-only additions to the shared config in ./git-ssh.nix.
+  programs.ssh.settings.daedalus = {
+    HostName = "192.168.0.112";
+    User = "amaddox";
+    IdentityFile = "~/.ssh/daedalus";
+  };
+
+  programs.git = {
+    settings = {
+      safe.directory = "*";
+      # gh as the HTTPS credential helper (what `gh auth setup-git` used to write).
+      # The empty entry clears any helper inherited from system config.
+      credential."https://github.com".helper = ["" "!${pkgs.gh}/bin/gh auth git-credential"];
+      credential."https://gist.github.com".helper = ["" "!${pkgs.gh}/bin/gh auth git-credential"];
+    };
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

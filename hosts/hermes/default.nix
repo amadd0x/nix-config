@@ -20,6 +20,7 @@
   };
 in {
   imports = [
+    inputs.home-manager.nixosModules.home-manager
     ./configuration.nix
     ./hardware-configuration.nix
     ../common/global
@@ -27,6 +28,19 @@ in {
     ../common/optional/workstation.nix
     ../common/optional/tailscale.nix
   ];
+
+  # amaddox's home-manager config, deployed with the system (`make switch HOST=hermes`).
+  # Only the shared module: home.nix sets nixpkgs options, which clash with useGlobalPkgs.
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    # Move aside any existing file home-manager would replace instead of failing.
+    backupFileExtension = "hm-bak";
+    users.amaddox = {
+      imports = [../../home-manager/git-ssh.nix];
+      home.stateVersion = "25.11";
+    };
+  };
 
   # Hermes-only apps. Shared ones live in ../common/optional/{workstation,dev}.nix.
   environment.systemPackages = with pkgs; [
